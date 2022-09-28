@@ -1,0 +1,33 @@
+Helpful Papers
+1. Trying to understand CCA inputs: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4610694/#pone.0140703.e009
+2. Classification based on fused CCA+WaveletTransform data and SVMs: https://www.sciencedirect.com/science/article/pii/S0165027022000292
+
+
+Helpful Repositories
+1. This repo is very helpful in understanding some sort of workflow: https://github.com/Mentalab-hub/explorepy/blob/master/examples/ssvep_demo 
+2. Particularly the analysis.py (which is the same as CCA-code.py that I uploaded and offline-analysis.py which combines everything
+
+
+What I understood from data-analysis of the channel info:
+1. We need to create a custom filter to avoid ringing in current butterworth filter - which is actually possibly this from the offline-analysis.py code of the above repository
+(and we may need to use mne for signal analysis somewhat like they do in offline-analysis.py)
+
+from scipy import signal
+def custom_filter(exg, lf, hf, fs, type):
+    """
+    Args:
+        exg: EEG signal with the shape: (N_chan, N_sample)
+        lf: Low cutoff frequency
+        hf: High cutoff frequency
+        fs: Sampling rate
+        type: Filter type, 'bandstop' or 'bandpass'
+    Returns:
+        (numpy ndarray): Filtered signal (N_chan, N_sample)
+    """
+    N = 4
+    b, a = signal.butter(N, [lf / fs, hf / fs], type)
+    return signal.filtfilt(b, a, exg)
+
+2. We may need to push up our stimulus frequencies for the SSVEP because we're not really detecting those frequencies in 6-8Hz range, and we're barely detecting first multiples in 12-16Hz range
+3. We may not need to filter the data, but I'm not sure exactly how to use the multi-channel data in our CCA matrix
+4. The offline-analysis.py code seems to have an understandble overall workflow that we can adhere to - however the data inputs are very different than ours because they're colleced from custom code
