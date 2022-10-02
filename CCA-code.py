@@ -56,7 +56,7 @@ if __name__ == '__main__':
     class_names = ['BottomLeft', 'BottomMiddle', 'BottomRight', 'TopLeft', 'TopRight']
 
     # Reading one trial from each stimulus for GG subject
-    fnames = ['/Users/siddhant/Documents/Neurotech-X-Drone/Data/Recorded/GG/' + i + '/64sec_1.csv' for i in class_names]
+    fnames = ['/Users/siddhant/Documents/Neurotech-X-Drone/Data/SSVEP/GG/' + i + '/64sec_1.csv' for i in class_names]
     dfs = [pd.read_csv(name) for name in fnames]
 
     for i,df in enumerate(dfs):
