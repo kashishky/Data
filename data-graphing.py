@@ -8,7 +8,7 @@ import os
 from scipy.signal import butter, lfilter, find_peaks
 
 
-path = "/Users/siddhant/Documents/Neurotech-X-Drone/Data/SSVEP/"
+path = "/Users/kashi/Documents/GitHub/Neurotech-X-Drone/Data/SSVEP/"
 # You can add more subjects to the list
 subjects = ['GG/']#, 'JP/', 'MC/'] # GB doesn't have anything, NG only has TopLeft
 stimuli = ['BottomLeft/', 'BottomMiddle/', 'BottomRight/','TopLeft/','TopRight/']
