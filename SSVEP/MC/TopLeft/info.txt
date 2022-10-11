@@ -1,0 +1,8 @@
+Session: 5 trials of 64.0 seconds each.
+Stimulation frequency: TopLeft
+Subject: MC
+Time between trials: 30 seconds.
+Buffer Size: 1001
+
+Notes: 
+9-23-22
